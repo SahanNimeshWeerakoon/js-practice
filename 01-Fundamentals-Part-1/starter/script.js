@@ -1,5 +1,7 @@
-let js = 'amazing';
+let firstName = "sahan";
 
-if (js === 'amazing') alert('Javascript is amazing');
+// Variable names can only be letters, numbers(dnt come first), _, $ as long as they are not reserved keywords
+// convension is to keep Capitalized variables just for constants
+// keep variables meaningfulf
 
-console.log(40+8+23-10);
+console.log(firstName);
