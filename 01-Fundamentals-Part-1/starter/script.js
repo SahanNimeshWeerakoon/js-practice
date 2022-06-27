@@ -5,3 +5,11 @@ let firstName = "sahan";
 // keep variables meaningfulf
 
 console.log(firstName);
+
+// Assignment
+let country = "Sri Lanka";
+let continent = "Asia";
+let population = 2.92 * (10**6);
+console.log({
+    country, continent, population
+});
