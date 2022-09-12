@@ -1,5 +1,9 @@
-var a = 'hello world!';
+(function(global, name) {
+    let greeting= 'Hello';
+    global.greeting = 'Hello';
+    console.log(greeting + ' ' + name);
+}(this, 'Sahan'));
 
-function b() {
-    console.log('Called b!');
-}
+console.log(greeting);
+
+/* enclosing IIFE inside () makes it isolate from the global code. */
