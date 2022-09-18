@@ -9,6 +9,7 @@
 
 /* enclosing IIFE inside () makes it isolate from the global code. */
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 47: Closures
 // function greet(whattosay) {
 //     return function (name) {
@@ -89,3 +90,28 @@
 // fs[1]();
 // fs[2]();
 
+// ========================================================================================================
+
+// 50 - Closures and callbacks
+// function sayHiLater() {
+//     var greeting = "Hi";
+    
+//     setTimeout(function() {
+//         console.log(greeting);  // greetings is out side of this functions' execution context scope
+//     }, 3000);
+// }
+
+// sayHiLater();
+
+// Callback Function = A function that is given to another functon to invoke, after it finishes
+// Callback eg:
+function tellMeWhenDone(callback) {
+    let a = 100; // Some work
+    let b = 300; // More work
+
+    callback();
+}
+
+tellMeWhenDone(function() {
+    console.log('amo amo im done');
+});
