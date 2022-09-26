@@ -105,13 +105,68 @@
 
 // Callback Function = A function that is given to another functon to invoke, after it finishes
 // Callback eg:
-function tellMeWhenDone(callback) {
-    let a = 100; // Some work
-    let b = 300; // More work
+// function tellMeWhenDone(callback) {
+//     let a = 100; // Some work
+//     let b = 300; // More work
 
-    callback();
+//     callback();
+// }
+
+// tellMeWhenDone(function() {
+//     console.log('amo amo im done');
+// });
+
+// ==========================================================================================================
+
+// 51 - call(), apply(), bind()
+
+// let person = {
+//     firstName: '',
+//     lastName: '',
+//     getFullName: function() {
+//         let fullName = this.firstName + ' ' + this.lastName;
+//         return fullName;
+//     }
+// }
+
+// function logName(lang1, lang2) {
+//     console.log('Logged: ' + this.getFullName());
+//     console.log('Arguments: ' + lang1 + ' ' + lang2);
+//     console.log('-------------------------');
+// }
+
+// let logPersonName = logName.bind(person); // bind makes a copy of logName function and set it to person objects property
+
+// logPersonName('en');
+
+// logName.call(person, 'en', 'esp');  // This doesnt create a copy of the function. but do the same as bind
+// logName.apply(person, ['en', 'esp']);  // only diff between call and apply is apply's second argument is an array
+
+
+// Function burrowing
+
+// let person = {
+//     firstName: 'amo',
+//     lastName: 'hutto',
+//     getFullName: function() {
+//         let fullName = this.firstName + ' ' + this.lastName;
+//         return fullName;
+//     }
+// }
+
+// let person2 = {
+//     firstName: 'Jane',
+//     lastName: 'Doe'
+// }
+
+// console.log(person.getFullName.apply(person2));
+
+
+// Function currying
+function multiply(a,b) {
+    return a*b;
 }
 
-tellMeWhenDone(function() {
-    console.log('amo amo im done');
-});
+let multiplyByTwo = multiply.bind(this, 2);
+
+console.log(multiplyByTwo(5));
