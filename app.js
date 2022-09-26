@@ -163,10 +163,48 @@
 
 
 // Function currying
-function multiply(a,b) {
-    return a*b;
+// function multiply(a,b) {
+//     return a*b;
+// }
+
+// let multiplyByTwo = multiply.bind(this, 2);
+
+// console.log(multiplyByTwo(5));
+
+
+// =======================================================================================
+// 52 - Functional programming
+function mapForEach(arr, fn) {
+    let newArr = [];
+    for (let i=0; i<arr.length; i++) {
+        newArr.push(
+            fn(arr[i])
+        );
+    }
+
+    return newArr;
 }
 
-let multiplyByTwo = multiply.bind(this, 2);
+let arr1 = [1,2,3];
+let arr2 = mapForEach(arr1, function(item) {
+    return item*2;
+});
 
-console.log(multiplyByTwo(5));
+console.log({arr1, arr2});
+
+var checkPastLimit = function(limitter, item) {
+    return item > limitter;
+}
+
+let arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
+
+console.log(arr4);
+
+let checkPastLimitSimplified = function(limitter) {
+    return function(limitter, item) {
+        return item > limitter;
+    }.bind(this, limitter);
+}
+
+let arr5 = mapForEach(arr1, checkPastLimitSimplified(1));
+console.log(arr5);
