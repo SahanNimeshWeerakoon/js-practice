@@ -174,37 +174,69 @@
 
 // =======================================================================================
 // 52 - Functional programming
-function mapForEach(arr, fn) {
-    let newArr = [];
-    for (let i=0; i<arr.length; i++) {
-        newArr.push(
-            fn(arr[i])
-        );
+// function mapForEach(arr, fn) {
+//     let newArr = [];
+//     for (let i=0; i<arr.length; i++) {
+//         newArr.push(
+//             fn(arr[i])
+//         );
+//     }
+
+//     return newArr;
+// }
+
+// let arr1 = [1,2,3];
+// let arr2 = mapForEach(arr1, function(item) {
+//     return item*2;
+// });
+
+// console.log({arr1, arr2});
+
+// var checkPastLimit = function(limitter, item) {
+//     return item > limitter;
+// }
+
+// let arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
+
+// console.log(arr4);
+
+// let checkPastLimitSimplified = function(limitter) {
+//     return function(limitter, item) {
+//         return item > limitter;
+//     }.bind(this, limitter);
+// }
+
+// let arr5 = mapForEach(arr1, checkPastLimitSimplified(1));
+// console.log(arr5);
+
+// ===============================================================================
+// 53 - Functional programming part 2
+// underscore.js
+
+// ===============================================================================
+// 54 - Classical vs prototypal inheritance 
+// Inheritance = One object gets access to the properties and methods of other objects
+// Classical Inheritance = more u use it more complex it gets
+// Prototypal Inheritance = flexible and simple
+// ==============================================================================
+// 55 - Understanding the prototype
+// Prototype = all js objects has a property of prototype(another object)
+            // - prototype object of a specific object has its own prototype. so theres a prototype chain.
+
+let person = {
+    firstName: 'Default',
+    lastName: 'Default',
+    getFullName: function() {
+        return `${this.firstName} ${this.lastName}`;
     }
-
-    return newArr;
 }
 
-let arr1 = [1,2,3];
-let arr2 = mapForEach(arr1, function(item) {
-    return item*2;
-});
-
-console.log({arr1, arr2});
-
-var checkPastLimit = function(limitter, item) {
-    return item > limitter;
+let john = {
+    firstName: 'John',
+    lastName: 'Doe'
 }
 
-let arr4 = mapForEach(arr1, checkPastLimit.bind(this, 1));
+// Never do this. For demo perpose only
+john.__proto__ = person;
 
-console.log(arr4);
-
-let checkPastLimitSimplified = function(limitter) {
-    return function(limitter, item) {
-        return item > limitter;
-    }.bind(this, limitter);
-}
-
-let arr5 = mapForEach(arr1, checkPastLimitSimplified(1));
-console.log(arr5);
+console.log(john.getFullName());    // this keyword in person refferes to john object here
