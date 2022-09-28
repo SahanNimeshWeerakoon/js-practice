@@ -223,20 +223,32 @@
 // Prototype = all js objects has a property of prototype(another object)
             // - prototype object of a specific object has its own prototype. so theres a prototype chain.
 
-let person = {
-    firstName: 'Default',
-    lastName: 'Default',
-    getFullName: function() {
-        return `${this.firstName} ${this.lastName}`;
-    }
-}
+// let person = {
+//     firstName: 'Default',
+//     lastName: 'Default',
+//     getFullName: function() {
+//         return `${this.firstName} ${this.lastName}`;
+//     }
+// }
 
-let john = {
-    firstName: 'John',
-    lastName: 'Doe'
-}
+// let john = {
+//     firstName: 'John',
+//     lastName: 'Doe'
+// }
 
-// Never do this. For demo perpose only
-john.__proto__ = person;
+// // Never do this. For demo perpose only
+// john.__proto__ = person;
 
-console.log(john.getFullName());    // this keyword in person refferes to john object here
+// console.log(john.getFullName());    // this keyword in person refferes to john object here
+
+// ================================================================================
+// 56 - Everything is an Object (or a primitive)
+// let a = {};
+// let b = function() {};
+// let c = [];
+
+// All of these are considered as objects. So has __proto__.
+// Prototype chain
+    // a => base prototype
+    // b => prototype for function => base prototype
+    // c => prototype for array => base prototype
