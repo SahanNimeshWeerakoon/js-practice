@@ -252,3 +252,27 @@
     // a => base prototype
     // b => prototype for function => base prototype
     // c => prototype for array => base prototype
+
+// =================================================================================
+// 57 - Reflection and extend
+// Reflection = Object can look at itself, listing and changing it's properties and methods.
+let person = {
+    firstName: 'Default',
+    lastName: 'Default',
+    getFullName: function() {
+        return `${this.firstName} ${this.lastName}`
+    }
+}
+
+let john = {
+    firstName: 'John',
+    lastName: 'Doe'
+}
+
+john.__proto__ = person;
+
+for (let prop in john) {
+    if (john.hasOwnProperty(prop)) {    // Has own property checks in the base object. if the prop is in proto, it doesnt count
+        console.log(prop+': '+john[prop]);
+    }
+}
