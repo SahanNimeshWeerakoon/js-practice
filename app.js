@@ -256,23 +256,43 @@
 // =================================================================================
 // 57 - Reflection and extend
 // Reflection = Object can look at itself, listing and changing it's properties and methods.
-let person = {
-    firstName: 'Default',
-    lastName: 'Default',
-    getFullName: function() {
-        return `${this.firstName} ${this.lastName}`
-    }
+// let person = {
+//     firstName: 'Default',
+//     lastName: 'Default',
+//     getFullName: function() {
+//         return `${this.firstName} ${this.lastName}`
+//     }
+// }
+
+// let john = {
+//     firstName: 'John',
+//     lastName: 'Doe'
+// }
+
+// john.__proto__ = person;
+
+// for (let prop in john) {    // For in loop iterates through the prototype object properties too
+//     if (john.hasOwnProperty(prop)) {    // Has own property checks in the base object. if the prop is in proto, it doesnt count
+//         console.log(prop+': '+john[prop]);
+//     }
+// }
+
+//====================================================================================
+// 58 - Function constructors, 'new' and the history of js
+// Function constructors
+
+function Person(firstname, lastname) {
+    this.firstName = firstname;
+    this.lastName = lastname;
 }
 
-let john = {
-    firstName: 'John',
-    lastName: 'Doe'
-}
+let john = new Person('John', 'Doe');
+console.log(john);
 
-john.__proto__ = person;
+let jane = new Person('Jane', 'Doe');
+console.log(jane);
 
-for (let prop in john) {
-    if (john.hasOwnProperty(prop)) {    // Has own property checks in the base object. if the prop is in proto, it doesnt count
-        console.log(prop+': '+john[prop]);
-    }
-}
+// On creating an object we should create its properties, methods and prototype
+// What new keyword does is, it creates an empty object. so the this keyword in the function indicates that empty obj
+// If you manually dont return an object, function returns 'this' object. 
+// FUNCTION CONSTRUCTOR = Function specifically used to create an object
