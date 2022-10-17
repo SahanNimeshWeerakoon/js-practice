@@ -281,18 +281,33 @@
 // 58 - Function constructors, 'new' and the history of js
 // Function constructors
 
-function Person(firstname, lastname) {
-    this.firstName = firstname;
-    this.lastName = lastname;
-}
+// function Person(firstname, lastname) {
+//     this.firstName = firstname;
+//     this.lastName = lastname;
+// }
 
-let john = new Person('John', 'Doe');
-console.log(john);
+// let john = new Person('John', 'Doe');
+// console.log(john);
 
-let jane = new Person('Jane', 'Doe');
-console.log(jane);
+// let jane = new Person('Jane', 'Doe');
+// console.log(jane);
 
 // On creating an object we should create its properties, methods and prototype
 // What new keyword does is, it creates an empty object. so the this keyword in the function indicates that empty obj
 // If you manually dont return an object, function returns 'this' object. 
 // FUNCTION CONSTRUCTOR = Function specifically used to create an object
+
+// ====================================================================================
+// 59 - Function Constructors and '.prototype'
+// Every function constructors has prototype. Only used by the new operator
+function Person(firstname, lastname) {
+    this.firstName = "firstname"
+    this.lastName = "lastname"
+}
+
+Person.prototype.getFullName = function() {
+    return `${this.firstName} ${this.lastName}`
+}
+
+let john = new Person('John', 'Seneviratne')
+console.log(john);
