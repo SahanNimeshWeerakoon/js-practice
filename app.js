@@ -300,14 +300,95 @@
 // ====================================================================================
 // 59 - Function Constructors and '.prototype'
 // Every function constructors has prototype. Only used by the new operator
-function Person(firstname, lastname) {
-    this.firstName = "firstname"
-    this.lastName = "lastname"
-}
+// function Person(firstname, lastname) {
+//     this.firstName = "firstname"
+//     this.lastName = "lastname"
+// }
 
-Person.prototype.getFullName = function() {
-    return `${this.firstName} ${this.lastName}`
-}
+// Person.prototype.getFullName = function() {
+//     return `${this.firstName} ${this.lastName}`
+// }
 
-let john = new Person('John', 'Seneviratne')
-console.log(john);
+// let john = new Person('John', 'Seneviratne')
+// console.log(john);
+// // using prototypes do not use more memory space. if its added inside function constructor, getFullName is initialized on every new operator
+// =====================================================================================
+// 61 - Conceptual Aside: Built-In Function Constructors
+// let a = new String("test");
+// This creates a string object. This object's prototype has all the properties and methods like length, toUpperCase, toLowerCase and stuff. 
+// When you just do "test".toLowerCase().... js transfers the "test" primitive type string to string object and do the rest
+// If we want to add a common method to all strings in js 
+// String.prototype.isLengthGreaterThan = function(limit) {
+//     return this.length > limit;
+// }
+
+// console.log("ammata hukai mathara kimbulige patiya".isLengthGreaterThan(100));
+
+// ======================================================================================
+// 62 - Dangerous Aside: Built-In Function Constructors
+// 63 - Dangerous Aside: Arrays and for..in
+// Array.prototype.myCustomFeature = 'amo amo'
+// var arr = ['john', 'jane', 'jim']
+
+// // For in loops are not suitable to iterate arrays
+// // For in loops iterates prototype properties too
+// // Use normal for loop instead
+// for (let prop in arr) {
+//     console.log(`${prop}: ${arr[prop]}`);
+// }
+
+// ======================================================================================
+// 64 - Object.create and Pure Prototypal Inheritance
+
+// POLYFILL = Code that adds a feature that the engine may lack.
+// if (!Object.create) {
+//     Object.create = function(o) {
+//         if (arguments.length > 1) {
+//             throw new Error('Object.create implementation only accepts the first parameter.')
+//         }
+//         function F() {}
+//         F.prototype = o;
+//         return new F();
+//     }
+// }
+
+// var person = {
+//     firstName: 'Default',
+//     lastName: 'Default',
+//     greet: function() {
+//         return `Hi ${this.firstName}`
+//     }
+// }
+
+// // Object.create creates an empty object and add its properties and methods to the prototype
+// let john = Object.create(person);
+// john.firstName = "john" // This creates a property in the base object. 
+
+// // ====================================================================================
+// // 65 - ES6 Classes
+// class Person {
+//     constructor(firstname, lastname) {
+//         this.firstName = firstname
+//         this.lastName = lastname
+//     }
+    
+//     greet() {
+//         return `Hi ${this.firstName}`
+//     }
+// }
+
+// let john = new Person('john', 'pranandu')
+
+// // Setting prototype is using extends keyword
+
+// class InfromalPerson extends Person {
+//     constructor(firstname, lastname) {
+//         super(firstname, lastname);
+//     }
+
+//     greet() {
+//         return `Yo ${this.firstName}`
+//     }
+// }
+
+// // SYNTACTIC SUGAR - Different way to type smt that doesnt change how it works under the hood
